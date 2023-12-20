@@ -1,6 +1,7 @@
 package gui;
 
 import Domain.Cake;
+import Domain.Order;
 import Service.CakeService;
 import Service.OrderService;
 
@@ -28,7 +29,7 @@ public class Controller {
     @FXML
     private Button updateCake;
     @FXML
-    private Button viewCakes;
+    private Button showAllCakes;
     @FXML
     private ListView<Cake> CakesListView;
 
@@ -52,8 +53,103 @@ public class Controller {
 
     @FXML
     private TextField cakeLayers_TextField;
+    @FXML
+    private TextField orderId;
+    @FXML
+    private TextField orderCakeID;
+    @FXML
+    private TextField placerName;
+    @FXML
+    private TextField placeDate;
+    @FXML
+    private TextField pickupDate;
 
+    @FXML
+    private Button addOrder;
+    @FXML
+    private Button deleteOrder;
+    @FXML
+    private Button updateOrder;
+    @FXML
+    private Button showAllOrders;
+    @FXML
+    private ListView<Order> OrdersListView;
+
+
+    private ObservableList<Order> Orders=FXCollections.observableArrayList();
     private ObservableList<Cake> Cakes = FXCollections.observableArrayList();
+
+    public void UpdateOrdersListView(){
+        Orders.clear();
+        for(Order O: Oservice.getALLItems())
+            Orders.add(O);
+        OrdersListView.setItems(Orders);
+    }
+
+    public void clickedAddOrder(ActionEvent actionEvent) {
+        int idC = Integer.parseInt(orderCakeID.getText());
+        int idO = Integer.parseInt(orderId.getText());
+        String Placername = placerName.getText();
+        String PlaceDate = placeDate.getText();
+        String PickUpDate = pickupDate.getText();
+        try {
+            Oservice.addOrder(Cservice.findCake(idC), idO,Placername,PlaceDate,PickUpDate);
+            UpdateOrdersListView();
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait();
+        }
+
+    }
+
+    public void clickedDeleteOrder(ActionEvent actionEvent) {
+        int id = Integer.parseInt(orderId.getText());
+
+        try {
+            Oservice.deleteOrder(id);
+            UpdateOrdersListView();
+        } catch (RuntimeException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    public void clickedUpdateOrder(ActionEvent actionEvent) {
+        int idC = Integer.parseInt(orderCakeID.getText());
+        int idO = Integer.parseInt(orderId.getText());
+        String Placername = placerName.getText();
+        String PlaceDate = placeDate.getText();
+        String PickUpDate = pickupDate.getText();
+
+        try {
+            Order oldOrder=Oservice.findOrder(idO);
+            Oservice.addOrder(Cservice.findCake(idC), idO,Placername,PlaceDate,PickUpDate);
+            UpdateOrdersListView();
+        } catch (RuntimeException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait();
+        }
+
+    }
+
+    public void showAllOrders(ActionEvent actionEvent) {
+        Order O=OrdersListView.getSelectionModel().getSelectedItem();
+        if(O!=null){
+            orderCakeID.setText(String.valueOf(O.getC()));
+            orderId.setText(String.valueOf(O.getId()));
+            placerName.setText(String.valueOf(O.getOrd_placer_name()));
+            placeDate.setText(String.valueOf(O.getOrd_place_date()));
+            pickupDate.setText(String.valueOf(O.getOrd_pckup_date()));
+        }
+        UpdateOrdersListView();
+    }
 
     public void UpdateCakesListView(){
         Cakes.clear();
@@ -85,10 +181,6 @@ public class Controller {
 
     }
 
-    private void validateId(Integer id) {
-        if (id < 0)
-            throw new RuntimeException("ID not available!");
-    }
 
     public void clickedDeleteCake(ActionEvent actionEvent) {
         int id = Integer.parseInt(idCake_TextField.getText());

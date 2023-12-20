@@ -173,7 +173,6 @@ public class GUIApplication extends javafx.application.Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/CakesApp.fxml"));
         fxmlLoader.setController(gui);
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
 
