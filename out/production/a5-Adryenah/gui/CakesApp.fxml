@@ -6,8 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="668.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+<AnchorPane prefHeight="563.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="25.0" layoutY="26.0" prefHeight="25.0" prefWidth="51.0" text="Cake's ID:" textFill="#ff0505" />
       <Label layoutX="23.0" layoutY="68.0" text="Cake's name:" textFill="#ed0707" />
@@ -16,17 +15,32 @@
       <Label layoutX="24.0" layoutY="177.0" text="Cake's weight" textFill="#eb0707" />
       <Label layoutX="25.0" layoutY="212.0" text="Cake's price:" textFill="#eb0404" />
       <Label layoutX="25.0" layoutY="250.0" text="Cake's no of layers:" textFill="#f80505" />
-      <Button layoutX="23.0" layoutY="275.0" mnemonicParsing="false" text="Add a Cake" />
-      <Button layoutX="23.0" layoutY="308.0" mnemonicParsing="false" text="Remove a Cake" />
-      <Button layoutX="23.0" layoutY="343.0" mnemonicParsing="false" text="Update a Cake" />
-      <Button layoutX="22.0" layoutY="376.0" mnemonicParsing="false" text="View all Cakes" />
-      <ListView layoutX="23.0" layoutY="417.0" prefHeight="238.0" prefWidth="200.0" />
-      <TextField layoutX="167.0" layoutY="26.0" prefHeight="17.0" prefWidth="149.0" promptText="input id cake" />
-      <TextField layoutX="167.0" layoutY="64.0" promptText="input cake's name" />
-      <TextField layoutX="167.0" layoutY="107.0" promptText="input cake layers flavour" />
-      <TextField layoutX="167.0" layoutY="141.0" promptText="input cake's frosting" />
-      <TextField layoutX="167.0" layoutY="173.0" promptText="input cake's weight" />
-      <TextField layoutX="167.0" layoutY="208.0" promptText="input cake's price" />
-      <TextField layoutX="167.0" layoutY="246.0" promptText="input no of layers" />
+      <Button layoutX="12.0" layoutY="275.0" mnemonicParsing="false" onAction="#clickedAddCake" text="Add a Cake" />
+      <Button layoutX="97.0" layoutY="275.0" mnemonicParsing="false" onAction="#clickedDeleteCake" text="Remove a Cake" />
+      <Button layoutX="202.0" layoutY="275.0" mnemonicParsing="false" onAction="#clickedUpdateCake" text="Update a Cake" />
+      <Button layoutX="306.0" layoutY="275.0" mnemonicParsing="false" onAction="#showAllCakes" text="View all Cakes" />
+      <ListView fx:id="CakesListView" layoutX="14.0" layoutY="306.0" prefHeight="238.0" prefWidth="379.0" />
+      <TextField fx:id="idCake_TextField" layoutX="167.0" layoutY="26.0" prefHeight="17.0" prefWidth="149.0" promptText="input id cake" />
+      <TextField fx:id="cakeName_TextField" layoutX="167.0" layoutY="64.0" promptText="input cake's name" />
+      <TextField fx:id="cakeLayerFlv_TextField" layoutX="167.0" layoutY="107.0" promptText="input cake layers flavour" />
+      <TextField fx:id="cakeFrosting_TextField" layoutX="167.0" layoutY="141.0" promptText="input cake's frosting" />
+      <TextField fx:id="cakeWeight_TextField" layoutX="167.0" layoutY="173.0" promptText="input cake's weight" />
+      <TextField fx:id="cakePrice_TextField" layoutX="167.0" layoutY="208.0" promptText="input cake's price" />
+      <TextField fx:id="cakeLayers_TextField" layoutX="167.0" layoutY="246.0" promptText="input no of layers" />
+      <Label layoutX="441.0" layoutY="30.0" text="Cake's ID:" textFill="#f60505" />
+      <Label layoutX="444.0" layoutY="68.0" text="Order's ID:" textFill="#ef0707" />
+      <Label layoutX="444.0" layoutY="111.0" text="Placer Name:" textFill="#ed0404" />
+      <Label layoutX="445.0" layoutY="177.0" text="Pick-up Date" textFill="#eb0808" />
+      <TextField fx:id="orderCakeID" layoutX="578.0" layoutY="26.0" promptText="input cake id from cakes" />
+      <TextField fx:id="orderId" layoutX="578.0" layoutY="64.0" promptText="input order's id" />
+      <TextField fx:id="placerName" layoutX="578.0" layoutY="107.0" promptText="input placer name" />
+      <TextField fx:id="placeDate" layoutX="578.0" layoutY="141.0" promptText="input place date(d/m/y)" />
+      <Button layoutX="432.0" layoutY="208.0" mnemonicParsing="false" onAction="#clickedAddOrder" text="Place an Order" />
+      <Button layoutX="534.0" layoutY="208.0" mnemonicParsing="false" onAction="#clickedDeleteOrder" text="Cancel an Order" />
+      <Button layoutX="647.0" layoutY="208.0" mnemonicParsing="false" onAction="#clickedUpdateOrder" text="Update an Order" />
+      <Button layoutX="761.0" layoutY="208.0" mnemonicParsing="false" onAction="#showAllOrders" text="View all Orders" />
+      <ListView fx:id="OrdersListView" layoutX="435.0" layoutY="238.0" prefHeight="305.0" prefWidth="422.0" />
+      <Label layoutX="443.0" layoutY="145.0" text="Place Date:" textFill="#e90606" />
+      <TextField fx:id="pickupDate" layoutX="578.0" layoutY="173.0" promptText="input pick-up date(d/m/y)" />
    </children>
 </AnchorPane>
