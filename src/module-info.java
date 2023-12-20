@@ -1,16 +1,13 @@
-module a5.Adryenah {
-    requires javafx.graphics;
+module gui {
+    //requires javafx.graphics;
     requires javafx.fxml;
     requires junit;
     requires org.junit.jupiter.api;
     requires java.sql;
-    requires org.xerial.sqlitejdbc;
-    requires java.desktop;
+    //requires org.xerial.sqlitejdbc;
+    //requires java.desktop;
     requires javafx.controls;
+    opens gui to javafx.fxml;
 
-    opens UI to javafx.fxml;
-    opens Main to javafx.fxml;
-
-    exports UI;
-    exports Main;
+    exports gui;
 }

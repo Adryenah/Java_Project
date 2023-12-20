@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="668.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controller">
+<AnchorPane prefHeight="668.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <children>
       <Label layoutX="25.0" layoutY="26.0" prefHeight="25.0" prefWidth="51.0" text="Cake's ID:" textFill="#ff0505" />
       <Label layoutX="23.0" layoutY="68.0" text="Cake's name:" textFill="#ed0707" />
@@ -16,10 +16,10 @@
       <Label layoutX="24.0" layoutY="177.0" text="Cake's weight" textFill="#eb0707" />
       <Label layoutX="25.0" layoutY="212.0" text="Cake's price:" textFill="#eb0404" />
       <Label layoutX="25.0" layoutY="250.0" text="Cake's no of layers:" textFill="#f80505" />
-      <Button fx:id="addCake" layoutX="23.0" layoutY="275.0" mnemonicParsing="false" onAction="#clickedAddCake" text="Add a Cake" />
-      <Button fx:id="deleteCake" layoutX="23.0" layoutY="308.0" mnemonicParsing="false" onAction="#clickedDeleteCake" text="Remove a Cake" />
-      <Button fx:id="updateCake" layoutX="23.0" layoutY="343.0" mnemonicParsing="false" onAction="#clickedUpdateCake" text="Update a Cake" />
-      <Button fx:id="viewCakes" layoutX="22.0" layoutY="376.0" mnemonicParsing="false" onAction="#showAllCakes" text="View all Cakes" />
+      <Button layoutX="23.0" layoutY="275.0" mnemonicParsing="false" text="Add a Cake" />
+      <Button layoutX="23.0" layoutY="308.0" mnemonicParsing="false" text="Remove a Cake" />
+      <Button layoutX="23.0" layoutY="343.0" mnemonicParsing="false" text="Update a Cake" />
+      <Button layoutX="22.0" layoutY="376.0" mnemonicParsing="false" text="View all Cakes" />
       <ListView layoutX="23.0" layoutY="417.0" prefHeight="238.0" prefWidth="200.0" />
       <TextField layoutX="167.0" layoutY="26.0" prefHeight="17.0" prefWidth="149.0" promptText="input id cake" />
       <TextField layoutX="167.0" layoutY="64.0" promptText="input cake's name" />

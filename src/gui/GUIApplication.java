@@ -1,4 +1,4 @@
-package Main;
+package gui;
 
 import Domain.Cake;
 import Domain.Order;
@@ -8,21 +8,16 @@ import Service.OrderService;
 import Testing.DomainTesting;
 import Testing.RepoTesting;
 import Testing.ServiceTesting;
-import UI.Ui;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-
-public class Main extends Application {
+public class GUIApplication extends javafx.application.Application {
 
     public static CakeRepo createBaseCakeRepository() {
         CakeRepo repoC = new CakeRepo();
@@ -152,8 +147,12 @@ public class Main extends Application {
     }
 
 
-    public static void main (String[] args) throws Exception {
+    public static void main (String[] args) throws Exception { launch();
+    }
 
+
+    @Override
+    public void start(Stage stage) throws Exception {
         iRepository<Integer, Cake> Crepo = readPropertiesCreateCakesRepo();
         iRepository<Integer, Order> Orepo = readPropertiesCreateOrdersRepo(Crepo);
 
@@ -169,17 +168,14 @@ public class Main extends Application {
         CakeService cakeservice = new CakeService(Crepo);
         OrderService orderservice = new OrderService(Orepo);
 
-        Ui ui = new Ui(orderservice,cakeservice);
-        ui.mainFunction();
+        Controller gui = new Controller(orderservice,cakeservice);
 
-    }
-
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("UI/Controller.fxml"));
-        stage.setTitle("JavaFX App");
-        stage.setScene(new Scene(root,600,400));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/CakesApp.fxml"));
+        fxmlLoader.setController(gui);
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
         stage.show();
+
     }
 }
