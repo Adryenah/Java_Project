@@ -1,3 +1,5 @@
+package Main;
+
 import Domain.Cake;
 import Domain.Order;
 import Repository.*;
@@ -7,6 +9,11 @@ import Testing.DomainTesting;
 import Testing.RepoTesting;
 import Testing.ServiceTesting;
 import UI.Ui;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,7 +22,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 
-public class Main {
+public class Main extends Application {
 
     public static CakeRepo createBaseCakeRepository() {
         CakeRepo repoC = new CakeRepo();
@@ -145,7 +152,7 @@ public class Main {
     }
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main (String[] args) throws Exception {
 
         iRepository<Integer, Cake> Crepo = readPropertiesCreateCakesRepo();
         iRepository<Integer, Order> Orepo = readPropertiesCreateOrdersRepo(Crepo);
@@ -168,4 +175,11 @@ public class Main {
     }
 
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("UI/Controller.fxml"));
+        stage.setTitle("JavaFX App");
+        stage.setScene(new Scene(root,600,400));
+        stage.show();
+    }
 }

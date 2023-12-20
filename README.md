@@ -1,6 +1,6 @@
 # Laboratory 5
 
-Design and implement a JavaFX UI for the application you have been working on for your home assignment. The classes in layers except the UI should not be modified. The GUI should allow all operations that your console UI provided (basically, your application should offer functionalities for all requirements in your previous assignments). 
+Design and implement a JavaFX UI for the application you have been working on for your home assignment. The classes in layers except the UI should not be modified. The Gui should allow all operations that your console UI provided (basically, your application should offer functionalities for all requirements in your previous assignments). 
 
 
 **Bonus (0.4p)** \
